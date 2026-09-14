@@ -43,4 +43,10 @@ PLAYWRIGHT_MODULE=/path/to/playwright/index.js node qa.mjs
 
 ## 未做的事情
 
-未操作真实店铺、未发送客户消息、未新增自动化任务、未修改原应用业务代码或运行配置、未重跑历史Agent业务实验。未发布账户、密钥、Cookie、真实客户资料或原应用源码。线上发布验证将在实际完成后补记。
+未操作真实店铺、未发送客户消息、未新增自动化任务、未修改原应用业务代码或运行配置、未重跑历史Agent业务实验。未发布账户、密钥、Cookie、真实客户资料或原应用源码。
+
+## 线上实际验证
+
+已对 https://tbtnb.github.io/zhaohui-commerce-blueprint/ 执行同一套90项检查，全部通过；首页HTTP 200，浏览器错误0、第三方和商家请求0。GitHub Pages构建成功且启用HTTPS。
+
+被测内容提交：`3372818034e3d80ff096a3f1827c06a1a88d02ff`。本节及JSON记录为发布后的文档补记，不改变被测HTML/CSS/JS内容。详情见`SCENE-VALIDATION.json`。线上验证仍只证明说明网站和本地导出，不证明商家场景已运行。
