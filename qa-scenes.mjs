@@ -35,8 +35,8 @@ try {
   check('Plan: fresh-state scene cannot be promoted by file availability',sample.scenes[1].readiness.code==='offline_snapshot_only');
   check('Plan: declared connector is not proof of verification',readinessFor(scenes[0],'read').code==='connector_verification_required');
   check('Plan: additional requirements do not grant permission',sample.additional_requirement.status==='requires_capability_review_not_authorization');
-  check('Plan: Markdown includes iteration and boundaries',planMarkdown(sample).includes('反馈与自我迭代') && planMarkdown(sample).includes(scenes[30].human));
-  check('Plan: copied instructions require review before registration',planPrompt(sample).includes('先结合当前昭回已发布能力') && planPrompt(sample).includes('不是运行配置'));
+  check('Plan: Markdown includes iteration and boundaries',planMarkdown(sample).includes('使用反馈与后续修改') && planMarkdown(sample).includes(scenes[30].human));
+  check('Plan: copied instructions require review before registration',planPrompt(sample).includes('请先说明昭回目前能处理哪些需求') && planPrompt(sample).includes('不会直接启动任务'));
   check('Plan: Markdown escapes user-provided HTML',planMarkdown(createPlan(bundle,[1],{goal:'<img src=x onerror=alert(1)>'})).includes('&lt;img'));
   if(!site){
     const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.md':'text/plain; charset=utf-8'};
@@ -62,7 +62,7 @@ try {
   page.on('request',r=>{const u=new URL(r.url());if(['http:','https:'].includes(u.protocol)&&u.origin!==new URL(site).origin)external.push(r.url());});
   let response=await page.goto(site,{waitUntil:'networkidle',timeout:45000});
   check('Live page: HTTP 200',response.status()===200);
-  check('Live page: correct scene-first edition',(await page.title()).includes('60个国内电商'));
+  check('Live page: correct scene-first edition',(await page.title()).includes('60 个国内电商'));
   await page.locator('#scene-count').filter({hasText:'60 / 60'}).waitFor();
   check('Live page: 60 cards, 10 groups and 7 bundles',await page.locator('.scene-card').count()===60 && await page.locator('.scene-group').count()===10 && await page.locator('.preset-card').count()===7);
   check('Live page: 24 evidence records',await page.locator('.source-item').count()===24);
@@ -125,11 +125,11 @@ try {
   await page.locator('#selected-only').check();
   check('Selected-only filter shows the exact chosen set',await page.locator('.scene-card:visible').count()===2);
   await page.locator('#plan-input').selectOption('files');
-  check('File inputs do not mark live-state scenes ready',(await page.locator('#readiness').innerText()).includes('1个时效型场景'));
+  check('File inputs do not mark live-state scenes ready',(await page.locator('#readiness').innerText()).includes('1 个场景需要最新店铺资料'));
   await page.locator('#plan-input').selectOption('read');
-  check('Declared connection still requires verification',(await page.locator('#readiness').innerText()).includes('已有连接，也要逐场景核验'));
+  check('Declared connection still requires verification',(await page.locator('#readiness').innerText()).includes('先检查能否读取这家店的最新资料'));
   await page.locator('#plan-input').selectOption('none');
-  check('Missing data remains a planning state',(await page.locator('#readiness').innerText()).includes('不是开始运行'));
+  check('Missing data remains a planning state',(await page.locator('#readiness').innerText()).includes('暂不安排运行'));
   await page.locator('#plan-input').selectOption('files');
   await page.locator('#plan-cadence').selectOption('daily');
   await page.locator('#plan-scope').fill('仅店铺A/B的脱敏订单和商品说明');
@@ -151,14 +151,14 @@ try {
   const mdPath=path.join(out,'exported-plan.md');
   await download.saveAs(mdPath);
   const markdown=await fs.readFile(mdPath,'utf8');
-  check('Markdown export has practical fields and evidence',markdown.includes('反馈与自我迭代') && markdown.includes('R12') && markdown.includes('临近发货期限'));
+  check('Markdown export has practical fields and evidence',markdown.includes('使用反馈与后续修改') && markdown.includes('R12') && markdown.includes('临近发货期限'));
   await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__copied=text;}}}));
   await page.locator('#copy-brief').click();
-  check('Copy action produces a scoped review request',(await page.evaluate(()=>window.__copied)).includes('先结合当前昭回已发布能力'));
+  check('Copy action produces a scoped review request',(await page.evaluate(()=>window.__copied)).includes('请先说明昭回目前能处理哪些需求'));
   await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new Error('Permission denied fixture');}}}));
   await page.locator('#copy-brief').click();
   await page.locator('#copy-text').waitFor({state:'visible'});
-  check('Clipboard denial has a manual-copy fallback',(await page.locator('#copy-text').inputValue()).includes('不是运行配置'));
+  check('Clipboard denial has a manual-copy fallback',(await page.locator('#copy-text').inputValue()).includes('不会直接启动任务'));
   await page.locator('#plan-goal').fill('<img src=x onerror="window.__injected=true">');
   await page.locator('#plan-extra').fill('<script>window.__injected=true</script>');
   check('User text is not executed as HTML',await page.evaluate(()=>window.__injected===undefined));
@@ -179,7 +179,7 @@ try {
     await page.locator(`[data-feedback="${value}"]`).click();
     check(`Feedback branch ${value} changes explanation`,await page.locator(`[data-feedback="${value}"]`).getAttribute('aria-pressed')==='true' && (await page.locator('#feedback-body').innerText()).length>25);
   }
-  check('Feedback simulation does not auto-publish a rule',(await page.locator('#feedback-body').innerText()).includes('不自动覆盖正式事实'));
+  check('Feedback simulation does not auto-publish a rule',(await page.locator('#feedback-body').innerText()).includes('不自动修改正式资料'));
   await page.locator('.feedback-lab').screenshot({path:path.join(out,'feedback-loop.png')});
   await page.reload({waitUntil:'networkidle'});
   check('Reload restores valid selected IDs but not free text',await page.locator('#plan-count').innerText()==='1' && await page.locator('#plan-goal').inputValue()==='');
@@ -198,7 +198,7 @@ try {
   for(const name of ['scenarios.md','scenarios.json','architecture.html','scene-plan.mjs','scene-export.mjs']){
     const result=await context.request.get(new URL(name,site).href);
     check(`Published resource ${name}`,result.status()===200);
-    if(name==='scenarios.md')check('Full handout includes final scene and research boundaries',(await result.text()).includes('跑了一个月'));
+    if(name==='scenarios.md')check('Full handout includes final scene and research boundaries',(await result.text()).includes(scenes[59].title));
   }
   const direct=await context.newPage();
   direct.setDefaultNavigationTimeout(10000);

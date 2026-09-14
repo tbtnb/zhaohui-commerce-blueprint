@@ -36,7 +36,7 @@ function persistSelection() {
   try {
     if (selected.size) localStorage.setItem(storageKey,JSON.stringify([...selected].sort((a,b)=>a-b)));
     else localStorage.removeItem(storageKey);
-  } catch { toast('当前浏览器无法保留选择；仍可在本页组合和导出。'); }
+  } catch { toast('当前浏览器不能记住选择，但仍可在这次打开的页面里组合和保存方案。'); }
 }
 function options() {
   return {goal:byId('plan-goal').value,scope:byId('plan-scope').value,extra:byId('plan-extra').value,inputMode:byId('plan-input').value,cadence:byId('plan-cadence').value};
@@ -131,17 +131,17 @@ function updatePlan() {
   });
   const readCount = ids.filter(id => sceneMap.get(id).mode === 'read').length;
   const mode = byId('plan-input').value;
-  let heading = '尚未选定场景';
-  let detail = '选择后会显示资料准备和能力核验提醒。';
+  let heading = '还没有选择场景';
+  let detail = '选择后会说明开始前需要确认哪些资料。';
   if (ids.length && mode === 'none') {
-    heading = '先做资料与能力盘点，不是开始运行';
-    detail = `选中了${ids.length}个场景，其中${readCount}个涉及新鲜读取。请先确认店铺、资料、用途、数据时效和读取范围；目前仅能导出需求草案。`;
+    heading = '先确认资料，暂不安排运行';
+    detail = `已选 ${ids.length} 个场景，其中 ${readCount} 个需要最新店铺资料。先确认允许使用的资料和更新时间，现在只保存需求说明。`;
   } else if (ids.length && mode === 'files') {
-    heading = readCount ? `${readCount}个时效型场景仍需补读取能力` : '可先准备一份文件样本试搭';
-    detail = readCount ? '文件版可整理截至导出时的清单，但不能保证当前会话、库存或履约状态。其余文件场景也要核验身份与数据时效，并完成业务试跑。' : '从一到三个场景开始，检查真实样本的来源、身份、覆盖和产物。能够提供文件不等于这些场景已经安装或验收。';
+    heading = readCount ? `有 ${readCount} 个场景需要最新店铺资料` : '可以先用一份文件尝试';
+    detail = readCount ? '文件能说明导出时的情况，不能保证现在的聊天、库存或发货状态。其它场景也要确认资料属于哪家店、哪件商品，再尝试整理结果。' : '可以先选一到三个场景，提供真实资料，并检查清单或草稿是否正确。能提供文件，不代表相应功能已经完成测试。';
   } else if (ids.length) {
-    heading = '已有连接，也要逐场景核验';
-    detail = '需要确认目标店铺、对象、字段、时效、授权和结果回执。自述有连接不会让本页面认定已接通；这里只生成评审方案。';
+    heading = '先检查能否读取这家店的最新资料';
+    detail = '需要实际确认店铺是否允许、哪些资料能读取，以及是否已经更新。本页面不会因为选择了已有读取方式，就认定店铺已接通。';
   }
   const readiness = byId('readiness');
   readiness.replaceChildren(newElement('strong',heading),newElement('p',detail));
@@ -152,7 +152,7 @@ function toggleSelection(id) {
   const removed = selected.has(id);
   if (removed) selected.delete(id); else selected.add(id);
   persistSelection(); updatePlan();
-  toast(removed ? `已从方案移除场景${String(id).padStart(2,'0')}` : `已加入场景${String(id).padStart(2,'0')}；可继续组合，或去“我的方案”导出。`);
+  toast(removed ? `已从方案移除场景${String(id).padStart(2,'0')}` : `已加入场景 ${String(id).padStart(2,'0')}。可以继续选择，或到我的方案保存说明。`);
 }
 all('[data-add]').forEach(button => button.addEventListener('click', () => toggleSelection(Number(button.dataset.add))));
 byId('chosen-scenes').addEventListener('click', event => {
@@ -168,13 +168,13 @@ all('[data-preset]').forEach(button => button.addEventListener('click', () => {
   preset.ids.forEach(id => selected.add(id));
   if (!byId('plan-goal').value.trim()) byId('plan-goal').value = preset.goal;
   persistSelection(); updatePlan();
-  toast(`已加入“${preset.name}”，新增${selected.size-before}个场景；保留原选择，没有执行任何任务。`);
+  toast(`已加入这套组合，新增 ${selected.size-before} 个场景。原选择保留，没有执行任务。`);
 }));
 byId('clear-plan').addEventListener('click', () => {
   selected.clear(); persistSelection(); updatePlan();
   byId('copy-fallback').hidden = true;
   byId('copy-text').value = '';
-  toast('场景选择已清空。经营目标文字保留在当前页面，不会上传。');
+  toast('选择已清空，填写的需求暂时保留在本页，不会上传。');
 });
 byId('plan-input').addEventListener('change',updatePlan);
 
@@ -188,12 +188,12 @@ function downloadText(text, name, mime) {
 byId('export-md').addEventListener('click', () => {
   if (!selected.size) return;
   downloadText(planMarkdown(currentPlan()),'zhaohui-commerce-plan.md','text/markdown');
-  toast('需求说明已生成。文件不是运行配置，不会触发店铺操作。');
+  toast('文字方案已生成，不会因此启动任务或操作店铺。');
 });
 byId('export-json').addEventListener('click', () => {
   if (!selected.size) return;
   downloadText(JSON.stringify(currentPlan(),null,2)+'\n','zhaohui-commerce-plan.json','application/json');
-  toast('结构化草案已生成，所有授权仍标为未验证。');
+  toast('方案数据已保存，供开发者参考。店铺权限仍需另外确认。');
 });
 byId('copy-brief').addEventListener('click', async () => {
   if (!selected.size) return;
@@ -201,13 +201,13 @@ byId('copy-brief').addEventListener('click', async () => {
   try {
     if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
     await navigator.clipboard.writeText(text);
-    toast('已复制需求说明；请先让昭回盘点能力和试跑，不要直接开放业务写入。');
+    toast('说明已复制。请先让昭回确认资料和权限，再尝试处理一次。');
   } catch {
     byId('copy-text').value = text;
     const fallback = byId('copy-fallback');
     fallback.hidden = false; fallback.open = true;
     byId('copy-text').focus(); byId('copy-text').select();
-    toast('剪贴板不可用，已展开可手动复制的说明。');
+    toast('浏览器暂时不能自动复制，下面可以手动选择文字复制。');
   }
 });
 
@@ -233,9 +233,9 @@ dayTabs.forEach((tab,index) => {
 });
 setDay(0);
 const feedback = {
-  useful:['保留跟进 · 示例候选','继续维护原问题，突出真正的新进展。','保存“有用”反馈和处理结果。若数据或交期变化，再进入下一次摘要；不因为被采纳就提高通知频率。正式规则未改变。'],
-  repeat:['减少重复 · 待验证候选','合并无变化提醒，但保留到期与状态变化。','提出按问题编号合并的候选，用旧事件检查是否漏掉紧急变化。商家批准后才用于后续正式流程；原待办没有关闭。'],
-  wrong:['纠正事实 · 等待核实','先隔离错误依据，不在错数据上优化话术。','核对商品身份、资料版本和来源；生成修复清单。经人工确认后把该问题加入回放样本，再考虑候选规则，不自动覆盖正式事实。']
+  useful:['继续跟进的建议','保留原问题，有进展再更新。','记录这条提醒有用，以及你怎样处理。资料或交期变化后再更新进展，不因此增加提醒次数。这次演示不会改变真实规则。'],
+  repeat:['减少重复提醒的建议','合并没有变化的提醒，保留到期提示。','建议把同一问题的重复提醒合并，先用以前的记录检查是否会漏掉急事。你确认后再修改正式安排，原待办不会被关闭。'],
+  wrong:['先核对资料','确认错误来源，再修改答复。','先核对商品、资料日期和来源，整理需要修正的地方。你确认以后，再用这个问题检查后续回复，不自动修改正式资料。']
 };
 all('[data-feedback]').forEach(button => button.addEventListener('click', () => {
   all('[data-feedback]').forEach(b => b.setAttribute('aria-pressed',String(b === button)));
@@ -254,7 +254,7 @@ function filterEvidence() {
     item.hidden = !((type === 'all' || item.dataset.evidenceType === type) && item.textContent.toLocaleLowerCase().includes(query));
     if (!item.hidden) count++;
   });
-  byId('evidence-count').textContent = `显示 ${count} / ${sourceItems.length} 条依据`;
+  byId('evidence-count').textContent = `显示 ${count} / ${sourceItems.length} 条资料`;
   byId('evidence-empty').hidden = count !== 0;
 }
 byId('evidence-search').addEventListener('input',filterEvidence);

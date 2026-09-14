@@ -1,26 +1,223 @@
 [
-{"id":"R01","type":"partial","title":"抖音电商学习中心 · 商家发货行为管理规则","url":"https://school.jinritemai.com/doudian/web/article/101706","level":"官方索引摘要；动态正文未完整读取","date":"核验 2026-09-14","note":"用于识别承诺发货、预售和实际履约需分别核对。未引用统一赔付额或截止时限；实施时应以目标店铺当前完整规则为准。"},
-{"id":"R02","type":"partial","title":"抖音电商 · 发货报备/协商/豁免产品手册","url":"https://school.jinritemai.com/doudian/web/article/aJM1KqAqvwWd","level":"官方索引摘要；动态正文未完整读取","date":"核验 2026-09-14","note":"提示特殊发货情形需要确认、材料与平台流程。报告只提出待办和举证准备，不推断商家已经有报备权限或必定获批。"},
-{"id":"R03","type":"official","title":"抖音电商罗盘 · 产品优势与经营分析场景","url":"https://compass.jinritemai.com/welcome/product","level":"官方产品正文已读取","date":"核验 2026-09-14","note":"官方列出直播、短视频、达人等分析维度。此处用于场景研究，不证明这些指标均可通过外部API获取，也不保证目标账号可见。"},
-{"id":"R04","type":"partial","title":"抖音电商学习中心 · 罗盘经营版常见问题","url":"https://school.jinritemai.com/doudian/wap/article/aHyVTUvYbCBv?from=shop_rules&from_school=1&should_full_screen=1&should_hide_bottom_nav=1","level":"官方索引摘要；动态正文未完整读取","date":"核验 2026-09-14","note":"提示数据指标与经营口径需要辨明。报告没有把不同渠道数据拼成未经证实的完整转化漏斗。"},
-{"id":"R05","type":"partial","title":"快手小店 · 商家客户服务管理规则","url":"https://edu.kwaixiaodian.com/rule/web/detail?id=b4wHHuPAtf","level":"官方索引摘要；正文依赖脚本","date":"核验 2026-09-14","note":"索引涉及客户服务与商家承诺。用于识别交接、过期回复和承诺追踪场景；不硬编码响应考核比例或时长。"},
-{"id":"R06","type":"partial","title":"快手小店 · 发货违规实施细则（商家）","url":"https://edu.kwaixiaodian.com/rule/web/detail?id=SEHf3uXBy8","level":"官方索引摘要；正文依赖脚本","date":"核验 2026-09-14","note":"只支持发货与揽收阶段需区分的调研方向。具体适用规则、例外和时限需在商家侧复核，不从历史摘要套用。"},
-{"id":"R07","type":"official","title":"京东 · 三方卖家商品售后维修服务规则","url":"https://help.jd.com/user/issue/330-4566.html","level":"官方正文已读取","date":"核验 2026-09-14","note":"覆盖售后受理、预约、收货、检测/维修等不同阶段。报告仅借鉴分阶段跟进，不将京东具体期限推广到所有平台和类目。"},
-{"id":"R08","type":"official","title":"聚水潭ERP开放平台 · 组合装商品上传","url":"https://open.jushuitan.com/document/2206.html","level":"官方正文已读取","date":"核验 2026-09-14","note":"商品编码、组合装身份与关联约束说明，提示套装与普通商品不能混用身份。官方接口存在不等于昭回已接入该商家ERP。"},
-{"id":"R09","type":"partial","title":"聚水潭 · 组合装查询接口说明","url":"https://openweb.jushuitan.com/dev-doc?docId=11&docType=2","level":"官方索引摘要；完整正文未取得","date":"核验 2026-09-14","note":"摘要说明组合装库存与子件关联。可组套量的具体计算必须依据商家确认的单位、占用和仓库口径，不把接口说明当实测。"},
-{"id":"R10","type":"partial","title":"聚水潭 · 指定订单接口的调用限制说明","url":"https://openweb.jushuitan.com/dev-doc?docId=22&docType=4","level":"官方索引摘要；完整正文未取得","date":"核验 2026-09-14","note":"指定文档的摘要提示部分平台订单查询限制。只说明接口覆盖要逐项验权，不能泛化为聚水潭整体不能接某个平台。"},
-{"id":"R11","type":"official","title":"有赞 · 客户打标与会员分层产品说明","url":"https://www.youzan.com/chanpin/kehudabiao","level":"厂商第一方产品正文已读取","date":"核验 2026-09-14","note":"参考其会员分层与经营服务场景，不采纳宣传中的收益保证。实际同意、用途、退订与访问控制另行治理；这不是昭回的现成能力。"},
-{"id":"R12","type":"official","title":"淘宝开放平台 · 订单同步场景","url":"https://open.alitrip.com/docs/doc.htm?articleId=1029&docType=1&treeId=1","level":"官方正文已读取","date":"文档更新 2025-09-30；核验 2026-09-14","note":"主子订单、hold、预售、漏单补采与敏感字段的处理约束。用于解释业务状态不能仅看单个已发货/已完成标签；本报告不使用财务计算部分。"},
-{"id":"R13","type":"community","title":"V2EX · 订单系统求推荐（原始经营需求）","url":"https://s.v2ex.com/t/1116130","level":"社区原帖已读取；个体案例","date":"发帖 2025-03-05；核验 2026-09-14","note":"发帖者描述1688采购、Excel登记、颜色尺码、到货验收及退换货状态混乱。作为具体痛点线索，不是行业发生率调查，也不推荐未经授权的倒卖。"},
-{"id":"R14","type":"community","title":"人人都是产品经理 · 我的售后表单进化过程","url":"https://www.woshipm.com/pd/4364980.html","level":"原作者从业复盘正文已读取；历史案例","date":"发布 2021-04-27；核验 2026-09-14","note":"从表格规范、问题分类到跨部门反馈与可配置工单的经验。只采用非财务流程启发，不复制其资金操作、不将历史案例当当前平台规则。"},
-{"id":"R15","type":"community","title":"人人都是产品经理 · 电商售后：退换货流程设计","url":"https://www.woshipm.com/pd/4093807.html","level":"原创设计文章正文已读取；历史参考","date":"发布 2020-07-21；核验 2026-09-14","note":"借鉴换货分为退回与补寄两个实物流阶段的思路。旧文中的类目限制不作为现行法律或平台规则引用，资金环节不纳入场景。"},
-{"id":"R16","type":"partial","title":"京东商家帮助中心 · 什么是恶意倒卖","url":"https://helpcenter.jd.com/vender/issue/45103.html","level":"官方索引摘要；正文不可读","date":"核验 2026-09-14","note":"作为采购场景的边界提示：自动化不能变成未经允许的搬货代发或规则规避。具体行为定性需完整规则及事实核验。"},
-{"id":"R17","type":"partial","title":"快手小店 · 规则中心与公告索引","url":"https://edu.kwaixiaodian.com/rule/web/index","level":"官方索引级核验","date":"核验 2026-09-14","note":"用于活动/规则资料来源定位。征求意见、已发布与已生效必须区分，不把列表中的新公告自动写入商家执行政策。"},
-{"id":"R18","type":"partial","title":"小红书电商 · 官方商家入口","url":"https://ec.xiaohongshu.com/ecommerce/home/","level":"官方入口核验；正文/账号数据未读取","date":"核验 2026-09-14","note":"只作为商家资料和授权调查入口。小红书场景是基于自有授权资料的设计，不据此宣称笔记、评论、达人或订单API均已开放。"},
-{"id":"R19","type":"official","title":"国家网信办发布 · 中华人民共和国个人信息保护法","url":"https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm","level":"官方法律正文已读取","date":"发布 2021-08-20；核验 2026-09-14","note":"用于最小必要、明确用途、个人权利及自动化商业营销拒绝方式等设计底线。本报告不是具体经营项目的完整合规意见，实际处理依据和数据范围需核验。"},
-{"id":"E01","type":"code","title":"现有Timer：定时回合、运行账本与工作区延续","path":"online-codex-desktop/resources/builtin-skills/zhaora-timer-manager/SKILL.md","level":"当前工作树读取；非60场景验收","date":"读取 2026-09-14","note":"已有创建、查询、暂停等能力及持久回执。新回合共享工作区，等待当前交互回合结束；本机休眠/离线不能承诺全天实时响应。"},
-{"id":"E02","type":"code","title":"现有通用Listener：仅工作区文件事件","path":"online-codex-desktop/resources/builtin-skills/zhaora-listener-manager/SKILL.md","level":"当前工作树读取；具体业务仍需试搭","date":"读取 2026-09-14","note":"workspace_files事件可持久化并绑定自动化目标。记录事件不等于业务完成；不能当作所有平台的订单/消息实时订阅已实现。"},
-{"id":"E03","type":"code","title":"浏览器与FDE：本地授权、通用只读连接器","path":"AGENTS.md：内置浏览器能力 / FDE黑盒浏览器连接器","level":"当前仓库规则读取；账号级授权未验证","date":"读取 2026-09-14","note":"通用连接器只允许data.read，浏览器凭据留本地，Desktop单Global Profile。生成脚本或复制方案不自动授予业务写权限或多店隔离。"},
-{"id":"E04","type":"code","title":"当前方案目录：非财务9个，2 executable / 7 guided","path":"online-codex-server/data/ecommerce-solution-templates.v1.json","level":"当前工作树逐项核对","date":"读取 2026-09-14","note":"客服与诊断标记executable，客服支持shadow/copilot，其余多为指导型。60个场景是本次设计，不是目录中新增了60个可执行插件。"},
-{"id":"E05","type":"code","title":"历史Agent Loop：两轮真实快照复核与状态延续","path":"docs/research/ecommerce-agent-loop-capability-verification.md","level":"历史实验报告读取；本次未重跑","date":"实验 2026-09-09；读取 2026-09-14","note":"两轮消费同一真实平台快照，检查商品错配、延续问题状态并自行暂停。不证明每轮实时采集、正式客服发送、长期无人值守或专家团绑定继承已验收。"}
+  {
+    "id": "R01",
+    "type": "partial",
+    "title": "抖音电商学习中心 · 商家发货行为管理规则",
+    "url": "https://school.jinritemai.com/doudian/web/article/101706",
+    "level": "官方索引摘要；动态正文未完整读取",
+    "date": "核验 2026-09-14",
+    "note": "提醒我们分别确认发货承诺、预售安排和实际发货进度。手册没有把某个时限或赔付额套给所有店铺，正式处理时仍以当前完整规则为准。"
+  },
+  {
+    "id": "R02",
+    "type": "partial",
+    "title": "抖音电商 · 发货报备/协商/豁免产品手册",
+    "url": "https://school.jinritemai.com/doudian/web/article/aJM1KqAqvwWd",
+    "level": "官方索引摘要；动态正文未完整读取",
+    "date": "核验 2026-09-14",
+    "note": "特殊发货情况可能需要向平台说明、补交材料和取得确认。这里只建议准备材料，不表示商家已经有办理权限或一定会被批准。"
+  },
+  {
+    "id": "R03",
+    "type": "official",
+    "title": "抖音电商罗盘 · 产品优势与经营分析场景",
+    "url": "https://compass.jinritemai.com/welcome/product",
+    "level": "官方产品正文已读取",
+    "date": "核验 2026-09-14",
+    "note": "抖音电商罗盘是平台提供的经营分析工具，介绍了直播、短视频和达人等分析内容。平台有这些数据，不代表昭回已经能自动读取，也不保证目标账号都能查看。"
+  },
+  {
+    "id": "R04",
+    "type": "partial",
+    "title": "抖音电商学习中心 · 罗盘经营版常见问题",
+    "url": "https://school.jinritemai.com/doudian/wap/article/aHyVTUvYbCBv?from=shop_rules&from_school=1&should_full_screen=1&should_hide_bottom_nav=1",
+    "level": "官方索引摘要；动态正文未完整读取",
+    "date": "核验 2026-09-14",
+    "note": "需要先理解每项统计的含义。不同渠道的访问、咨询和订单不能随意拼在一起，推断完整购买过程。"
+  },
+  {
+    "id": "R05",
+    "type": "partial",
+    "title": "快手小店 · 商家客户服务管理规则",
+    "url": "https://edu.kwaixiaodian.com/rule/web/detail?id=b4wHHuPAtf",
+    "level": "官方索引摘要；正文依赖脚本",
+    "date": "核验 2026-09-14",
+    "note": "可读摘要涉及客户服务和商家承诺，用于参考换班交接、回复更新和承诺跟进。具体响应要求需要另外查看当前完整规则。"
+  },
+  {
+    "id": "R06",
+    "type": "partial",
+    "title": "快手小店 · 发货违规实施细则（商家）",
+    "url": "https://edu.kwaixiaodian.com/rule/web/detail?id=SEHf3uXBy8",
+    "level": "官方索引摘要；正文依赖脚本",
+    "date": "核验 2026-09-14",
+    "note": "商家录入发货与快递确认收件需要分开检查。具体期限、例外和适用条件，仍要在商家侧查看当前规则。"
+  },
+  {
+    "id": "R07",
+    "type": "official",
+    "title": "京东 · 三方卖家商品售后维修服务规则",
+    "url": "https://help.jd.com/user/issue/330-4566.html",
+    "level": "官方正文已读取",
+    "date": "核验 2026-09-14",
+    "note": "说明售后受理、预约、收货、检测和维修分别有进度要求。手册借鉴分步跟进的方式，不把京东期限直接套给其他平台。"
+  },
+  {
+    "id": "R08",
+    "type": "official",
+    "title": "聚水潭ERP开放平台 · 组合装商品上传",
+    "url": "https://open.jushuitan.com/document/2206.html",
+    "level": "官方正文已读取",
+    "date": "核验 2026-09-14",
+    "note": "聚水潭是订单和库存管理软件。这份资料说明商品编号和套装对应关系的要求，提醒套装不能与普通商品混为一件货；仍需另行确认商家允许昭回读取什么。"
+  },
+  {
+    "id": "R09",
+    "type": "partial",
+    "title": "聚水潭 · 组合装查询接口说明",
+    "url": "https://openweb.jushuitan.com/dev-doc?docId=11&docType=2",
+    "level": "官方索引摘要；完整正文未取得",
+    "date": "核验 2026-09-14",
+    "note": "摘要说明套装库存与里面的配件有关。计算能配成多少套时，需要先确认数量单位、已经占用的货和仓库范围，没有拿到实际资料就不能认定结果正确。"
+  },
+  {
+    "id": "R10",
+    "type": "partial",
+    "title": "聚水潭 · 指定订单接口的调用限制说明",
+    "url": "https://openweb.jushuitan.com/dev-doc?docId=22&docType=4",
+    "level": "官方索引摘要；完整正文未取得",
+    "date": "核验 2026-09-14",
+    "note": "这一份说明提到某些订单查询有限制，表示具体读取方法需要逐项确认。不能据此判断整个软件都不能连接某个平台。"
+  },
+  {
+    "id": "R11",
+    "type": "official",
+    "title": "有赞 · 客户打标与会员分层产品说明",
+    "url": "https://www.youzan.com/chanpin/kehudabiao",
+    "level": "厂商第一方产品正文已读取",
+    "date": "核验 2026-09-14",
+    "note": "参考有赞提供的会员分类和服务用法，不把其宣传中的收益当成保证。实际使用仍要检查客户同意、退订和资料用途，这不是昭回已经开通的功能。"
+  },
+  {
+    "id": "R12",
+    "type": "official",
+    "title": "淘宝开放平台 · 订单同步场景",
+    "url": "https://open.alitrip.com/docs/doc.htm?articleId=1029&docType=1&treeId=1",
+    "level": "官方正文已读取",
+    "date": "文档更新 2025-09-30；核验 2026-09-14",
+    "note": "订单可能需要按商品分开处理，预售或特殊状态也可能暂时不能发货。漏掉的记录和客户个人信息还要按规定处理，不能只凭已发货或已完成的标记下结论。这里不使用财务计算部分。"
+  },
+  {
+    "id": "R13",
+    "type": "community",
+    "title": "V2EX · 订单系统求推荐（原始经营需求）",
+    "url": "https://s.v2ex.com/t/1116130",
+    "level": "社区原帖已读取；个体案例",
+    "date": "发帖 2025-03-05；核验 2026-09-14",
+    "note": "发帖者描述从 1688 采购，用 Excel 表格登记颜色尺码、收货和退换时遇到的混乱。这是一个具体经营问题，不代表调查了整个行业，也不推荐未经允许的倒卖。"
+  },
+  {
+    "id": "R14",
+    "type": "community",
+    "title": "人人都是产品经理 · 我的售后表单进化过程",
+    "url": "https://www.woshipm.com/pd/4364980.html",
+    "level": "原作者从业复盘正文已读取；历史案例",
+    "date": "发布 2021-04-27；核验 2026-09-14",
+    "note": "从业者介绍怎样规范表格、分类售后问题、记录负责人并继续跟进。这里只参考非财务的工作安排，不使用其资金操作，也不把旧案例当成当前平台规则。"
+  },
+  {
+    "id": "R15",
+    "type": "community",
+    "title": "人人都是产品经理 · 电商售后：退换货流程设计",
+    "url": "https://www.woshipm.com/pd/4093807.html",
+    "level": "原创设计文章正文已读取；历史参考",
+    "date": "发布 2020-07-21；核验 2026-09-14",
+    "note": "参考换货要分别跟进旧件退回和新件补寄的做法。旧文章中的类目限制不代表现在的规则，本手册不包含资金执行。"
+  },
+  {
+    "id": "R16",
+    "type": "partial",
+    "title": "京东商家帮助中心 · 什么是恶意倒卖",
+    "url": "https://helpcenter.jd.com/vender/issue/45103.html",
+    "level": "官方索引摘要；正文不可读",
+    "date": "核验 2026-09-14",
+    "note": "提醒采购自动化不能用于未经允许的搬货代发或规避规则。具体行为是否违规，仍要结合完整规则和实际情况判断。"
+  },
+  {
+    "id": "R17",
+    "type": "partial",
+    "title": "快手小店 · 规则中心与公告索引",
+    "url": "https://edu.kwaixiaodian.com/rule/web/index",
+    "level": "官方索引级核验",
+    "date": "核验 2026-09-14",
+    "note": "可作为查找活动和规则通知的入口。征求意见、正式发布和已经生效不同，不能见到新标题就立即改变店铺规则。"
+  },
+  {
+    "id": "R18",
+    "type": "partial",
+    "title": "小红书电商 · 官方商家入口",
+    "url": "https://ec.xiaohongshu.com/ecommerce/home/",
+    "level": "官方入口核验；正文/账号数据未读取",
+    "date": "核验 2026-09-14",
+    "note": "本次只确认了官方商家入口，没有读取具体账号数据。小红书场景需要使用商家合法提供的资料，不能因此声称笔记、评论、达人和订单都可以自动获取。"
+  },
+  {
+    "id": "R19",
+    "type": "official",
+    "title": "国家网信办发布 · 中华人民共和国个人信息保护法",
+    "url": "https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm",
+    "level": "官方法律正文已读取",
+    "date": "发布 2021-08-20；核验 2026-09-14",
+    "note": "提供少收集无关信息、明确使用目的、保障个人权利和允许拒绝营销等要求。这里只说明设计时需要注意的事项，实际业务仍要核实使用资料是否合法。"
+  },
+  {
+    "id": "E01",
+    "type": "code",
+    "title": "现有Timer：定时回合、运行账本与工作区延续",
+    "path": "online-codex-desktop/resources/builtin-skills/zhaora-timer-manager/SKILL.md",
+    "level": "已读取当前项目资料；未逐项测试这 60 个场景",
+    "date": "读取 2026-09-14",
+    "note": "已有创建、查看和暂停定时任务的功能，也会保存实际运行结果。后续任务继续使用指定工作文件，但需要等待当前交互任务结束。电脑休眠或离线时，不能承诺全天即时响应。",
+    "display_title": "昭回已有的定时检查与运行记录"
+  },
+  {
+    "id": "E02",
+    "type": "code",
+    "title": "现有通用Listener：仅工作区文件事件",
+    "path": "online-codex-desktop/resources/builtin-skills/zhaora-listener-manager/SKILL.md",
+    "level": "已读取当前项目资料；具体用途仍需尝试",
+    "date": "读取 2026-09-14",
+    "note": "能够检查指定工作文件的变化，并记录和安排后续任务。发现文件变了，不等于工作已经完成，也不代表所有平台的订单和消息都可以实时读取。",
+    "display_title": "昭回已有的文件更新检查"
+  },
+  {
+    "id": "E03",
+    "type": "code",
+    "title": "浏览器与FDE：本地授权、通用只读连接器",
+    "path": "AGENTS.md：内置浏览器能力 / FDE黑盒浏览器连接器",
+    "level": "已读取当前项目规则；店铺权限仍需确认",
+    "date": "读取 2026-09-14",
+    "note": "当前通用读取工具只允许查看资料，不允许修改店铺。浏览器登录信息保留在本机，目前共用一个浏览器登录环境，多店账号能否隔离需要另行确认。复制方案不会增加操作权限。",
+    "display_title": "昭回网页读取的权限与限制"
+  },
+  {
+    "id": "E04",
+    "type": "code",
+    "title": "当前方案目录：非财务9个，2 executable / 7 guided",
+    "path": "online-codex-server/data/ecommerce-solution-templates.v1.json",
+    "level": "已核对当前项目目录",
+    "date": "读取 2026-09-14",
+    "note": "排除财务后有 9 个方案，其中 2 个标为可执行，7 个以指导为主。客服目前主要是观察与人工审核。本手册的 60 个场景是新整理的使用建议，不是已经新增并测试了 60 个功能。",
+    "display_title": "当前已有方案的数量与完成情况"
+  },
+  {
+    "id": "E05",
+    "type": "code",
+    "title": "历史Agent Loop：两轮真实快照复核与状态延续",
+    "path": "docs/research/ecommerce-agent-loop-capability-verification.md",
+    "level": "已读取之前的实验报告；这次没有重新运行",
+    "date": "实验 2026-09-09；读取 2026-09-14",
+    "note": "两次检查使用同一份真实平台资料，发现商品对应错误、继续保存问题进展并自行暂停。这不能证明每次都读了最新数据、正式发送了客服消息，或已经能够长期无人照看地运营店铺。",
+    "display_title": "之前的两次连续检查试验"
+  }
 ]
