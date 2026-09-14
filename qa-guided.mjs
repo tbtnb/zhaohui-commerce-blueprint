@@ -1,6 +1,6 @@
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE || 'playwright');import assert from 'node:assert/strict';import fs from 'node:fs';
 fs.mkdirSync('qa-output',{recursive:true});
-const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));const base=process.env.TARGET||'http://127.0.0.1:8765/';await page.goto(base);await page.locator('#welcome [data-pick="31"]').waitFor();
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));const base=process.env.TARGET||'http://127.0.0.1:8765/';await page.goto(base);await page.locator('#ideas button').first().waitFor({state:'attached'});
 await page.screenshot({path:'qa-output/guided-home.png'});
 const go=async id=>{await page.evaluate(id=>{document.querySelector('#browse').click();document.querySelector(`#ideas [data-pick="${id}"]`).click();},id);};
 const click=async(step,selector)=>{await page.locator(`#step-${step} ${selector}`).first().evaluate(n=>n.click());};
