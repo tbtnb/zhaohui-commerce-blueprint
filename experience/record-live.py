@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Record completed deployed-page checks without changing the tested page."""
+import hashlib
+import json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parent
+report=json.loads((ROOT/'VALIDATION.json').read_text(encoding='utf-8'))
+live=json.loads((ROOT/'qa-output'/'live'/'results.json').read_text(encoding='utf-8'))
+assert live['result']=='passed' and live['sceneJourneys']==60 and live['checks']==99
+assert all(s['issueRecovery'] and s['duplicateReuse'] for s in live['sceneRuns'])
+assert live['browserErrors']==[] and live['externalRequests']==[]
+# Ensure frontend content still equals the reviewed build while adding this result.
+for name,digest in report['content_sha256'].items():
+    assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,name+' changed after validation'
+report['live']=live
+report['tested_content_commit']='d9a21be'
+report['publication_note']='Only this independent experience/ directory was published in the content commit. Existing homepage and guide were not replaced by that commit.'
+(ROOT/'VALIDATION.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+summary='''# 互动搭建演示验证记录
+
+验证的是静态说明网站，不是真实店铺自动化。所有问答和业务资料都是预设示例。
+
+## 实际结果
+
+本地与线上分别通过 99 项检查。在线地址：
+https://tbtnb.github.io/zhaohui-commerce-blueprint/experience/
+
+逐项完成 60 个场景的正常运行、60 次资料异常处理和 60 次重复输入检查。所有场景都显示对应的对象、前后变化、问题与结果；异常项继续保留待人工确认，重复输入不会把待确认事项改成已解决。
+
+检查了已有连接、新建连接、工作文件与定时、聊天、文件更新的 9 种组合。选择范围、处理方式、时间和结果详细程度会进入演示与导出说明。
+
+已验证暂停、单步、继续、倍速、重播、修改要求后停止旧流程、人工反馈后的第二轮结果，以及实际下载的搭建说明。简化结果不删除仍需处理的项目。
+
+1440、768、390、320 像素页面检查通过，手机中的业务插图改为可读的排列。无脚本时保留场景清单和文字说明入口。旧技术章节与手册链接仍可访问。
+
+线上首页返回 HTTP 200。检查期间浏览器错误为零，没有模型、商家或第三方请求。新页面没有保存自由填写的个人文本。
+
+## 设计和范围
+
+60 个场景共用 23 类基础布局和播放组件，每项有不同的业务对象、动作说明和移动安排。并非 60 个独立视频，也不是 60 项已经接通真实店铺的功能。
+
+每项附 6 个搭建步骤，说明用户确认什么、昭回处理什么，以及完成后应看到什么，共 360 项步骤说明。资料接入包含在搭建过程，不作为场景入口的限制标签。
+
+文案通过已安装的 oil-tone 检查。页面、数据和说明检查没有发现个人路径或真实凭据。原技术资料的限制继续保留；不执行财务、发送、发货或库存修改。
+
+## 发布
+
+实际被测内容提交：d9a21be。此次提交只新增 experience/，没有替换同一仓库正在编辑的主首页。完整可重复检查脚本为本目录 qa.mjs，详见 VALIDATION.json。
+
+测试中发现浏览器自动化工具对禁用的下拉选项报告不一致；核对原生 disabled 属性后修正断言，没有放开原有操作限制。随后全量检查通过。
+'''
+(ROOT/'VALIDATION.md').write_text(summary,encoding='utf-8')
+print(json.dumps({'live':'passed','browser_checks':99,'scene_runs':180,'errors':0,'external_requests':0,'content_changed':False}))
