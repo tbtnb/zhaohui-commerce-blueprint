@@ -1,0 +1,13 @@
+{
+  "owner": "zhaohui-journey-experience-v4",
+  "purpose": "Independent explanatory walkthrough; root homepage untouched",
+  "source_sha256": {
+    "journey-model.mjs": "38796a62760ad493082a15dd0ecca7f97484ae87fc93415835cf4609b2fe3aa4",
+    "journey-art.mjs": "c3ad211303efce6816990175932140b8811c489e218eab4e3306941b39711e21",
+    "journey-visuals.mjs": "8207c46e7b06315529cfb5b143f8267913550e6b5ddf8930339b8a1738e33271",
+    "journey.css": "7c5e90722bbbd0298b5d6d79e998aed18622b554125ab049dfe05fac3d62ef8b",
+    "journey-world.css": "6a8761eab55b6451234629e41216f3d417e56b6fae482b08e33bba399b46498a",
+    "journey.mjs": "4017058f70fa0d065772c15c1e1cc893884af3857053fe1f19e68fe3fa6bc694",
+    "journey-template.html": "d364daefb02d608618cd7a1d1ee3a6f44686c7a6ccfadcd6f3b08ea127e93898"
+  }
+}

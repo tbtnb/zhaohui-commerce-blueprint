@@ -1,0 +1,8 @@
+/* Keep the current task dominant once the explanatory conversation has finished. */
+.conversation:has(#run-left:not([hidden])) .chat-history,
+.conversation:has(#build-left:not([hidden])) .chat-history{display:none}
+.answer-button b{font-weight:520}
+.idea-chip.decorative{pointer-events:auto;cursor:pointer}
+@media(prefers-reduced-motion:no-preference){
+  .scene-decor[data-cue-frame="3"] .scene-callout{transition-delay:.35s}
+}
