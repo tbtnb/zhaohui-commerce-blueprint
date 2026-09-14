@@ -37,7 +37,7 @@ class ReportParser(HTMLParser):
         elif tag == 'a':
             href = a.get('href', '')
             if href.startswith('#source-'):
-                href = 'https://tbtnb.github.io/zhaohui-commerce-blueprint/' + href
+                href = 'https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html' + href
             self.links.append(href)
             self.parts.append('[')
         elif tag in ('td', 'th'):

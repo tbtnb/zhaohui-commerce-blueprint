@@ -8,7 +8,7 @@
 
 ## 你缺的不是又一个 Agent。 是把能力接成可靠的经营闭环。
 
-当前系统已有专家、方案工厂、连接器、任务和定时运行底座。合理路径是补齐事实、事件与动作合同，而不是重做“电商万能机器人”。以下现状来自本次源码读取，不把旧架构文档当实现证明。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)[[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E07)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+当前系统已有专家、方案工厂、连接器、任务和定时运行底座。合理路径是补齐事实、事件与动作合同，而不是重做“电商万能机器人”。以下现状来自本次源码读取，不把旧架构文档当实现证明。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)[[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E07)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 09排除财务后的模板
 
@@ -16,7 +16,7 @@
 
 07仍为 guided 指导型
 
-可执行模板为经营诊断和客服指挥中心。“executable”只是目录分类，不代表真实商家长期无人值守已验收。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)
+可执行模板为经营诊断和客服指挥中心。“executable”只是目录分类，不代表真实商家长期无人值守已验收。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)
 
  | 现有基础 | 本次确认到的边界 | 下一步应补什么
 
@@ -24,31 +24,31 @@
 
 草稿 → 评测 → 发布
 
- | 客服默认 shadow/copilot，外部写默认拒绝。结构检查并非业务问答测试。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)[[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E02) | 增加真实业务样本、商品身份与结果读回评测；不是仅修改自治模式字符串。
+ | 客服默认 shadow/copilot，外部写默认拒绝。结构检查并非业务问答测试。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)[[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E02) | 增加真实业务样本、商品身份与结果读回评测；不是仅修改自治模式字符串。
 
  | Timer / Agent Loop
 
 持久状态与跨回合
 
- | 历史报告有两轮真实快照复核；未证明长期在线、每轮新采集或实际客服发送。[[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06) | 复用调度，验证新数据、断网恢复和无人值守窗口；模型只在有工作时醒来。
+ | 历史报告有两轮真实快照复核；未证明长期在线、每轮新采集或实际客服发送。[[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06) | 复用调度，验证新数据、断网恢复和无人值守窗口；模型只在有工作时醒来。
 
  | 通用 Listener
 
 本地 durable events
 
- | 通用来源仅 workspace_files；不能等同于所有电商平台事件网关。[[E03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E03) | 新增平台入口、游标、续约与补采；分清监听、触发路由、业务动作。
+ | 通用来源仅 workspace_files；不能等同于所有电商平台事件网关。[[E03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E03) | 新增平台入口、游标、续约与补采；分清监听、触发路由、业务动作。
 
  | 连接器 / FDE
 
 脚本与回执治理
 
- | 通用浏览器接入只读，凭据本地；单 Global Profile 不是成熟多店多账号隔离。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E05) | 优先官方 API，写能力独立实现和测试。先解决账户、设备与租户隔离。
+ | 通用浏览器接入只读，凭据本地；单 Global Profile 不是成熟多店多账号隔离。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E05) | 优先官方 API，写能力独立实现和测试。先解决账户、设备与租户隔离。
 
  | 任务与执行账本
 
 租约 / 幂等 / 持久化
 
- | 已有持久操作和租约，但所查完成通知使用进程内事件。[[E04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E04)[[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E07) | 补事务性 Inbox / Outbox，复用 Task 状态机；崩溃后重放通知而不重复业务动作。
+ | 已有持久操作和租约，但所查完成通知使用进程内事件。[[E04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E04)[[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E07) | 补事务性 Inbox / Outbox，复用 Task 状态机；崩溃后重放通知而不重复业务动作。
 
 优先产品：可持续的“经营例行检查 + 客服副驾”。
 
@@ -78,7 +78,7 @@
 **不要承诺**
 通用 FDE 连接器仍只读；客服发送走专用受控路径，不能新增脚本绕过写权限。历史两轮复核不等于持续经营验收。
 
-[[S21]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S21) [[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E05) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06)
+[[S21]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S21) [[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E05) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06)
 
 官方链路明确 · 需准入
 
@@ -98,7 +98,7 @@
 **不要承诺**
 普通下单不代表立即可履约；预售、拼团 hold、拆单和售后要分别建模。通用商品/订单权限不自动授予聊天发送权限。
 
-[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S04)
+[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S04)
 
 部分官方信息可读 · 待验权
 
@@ -118,7 +118,7 @@
 **不要承诺**
 商品发布、商家客服、广告投放与内容发布分别验权；发布功能要先验类目/资质与字段，不由大模型猜测平台规则。
 
-[[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S05)
+[[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S05)
 
 电商授权可见 · 内容能力待核
 
@@ -138,7 +138,7 @@
 **不要承诺**
 不承诺自动发任意笔记、批量私信或抓取他人用户数据。内容先生成待审素材，获准后再使用对应官方发布能力。
 
-[[S06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S06)
+[[S06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S06)
 
 入口核验 · 深层能力待确认
 
@@ -158,7 +158,7 @@
 **不要承诺**
 未证实能用的功能保持 blocked，不用浏览器脚本伪装已接入。
 
-[[S07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S07)
+[[S07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S07)
 
 官方资料充分 · 条件式优先
 
@@ -178,7 +178,7 @@ HTTPS Webhook 验签、持久落库后快速 ACK；处理重复与乱序。官�
 **不要承诺**
 传输去重与业务动作幂等是两件事；不把每条通知都送模型。Webhook 的重复不能生成重复履约动作。
 
-[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S01) [[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S02) [[C01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C01)
+[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S01) [[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S02) [[C01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C01)
 
 官方事件链路明确 · 需逐项授权
 
@@ -198,7 +198,7 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 **不要承诺**
 不同履约模式不能共用未经验证的发货动作；先只读与异常工单，再评估库存或 Listing 受控写入。
 
-[[S03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S03)
+[[S03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S03)
 
 候选平台 · 站点与授权待核
 
@@ -218,11 +218,11 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 **不要承诺**
 不宣称当前已支持自动上架、自动客服或全量事件。审核未完成时保留素材草稿、只读授权能力和人工接口。
 
-[[S08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S08)
+[[S08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S08)
 
 自动接入不能替你获得授权，也不能跳过审核。
 
-抖店、小红书部分文档只能读取官方索引；京东、TikTok Shop 和拼多多官方准入正文仍不足。它们被标为待核验，而非虚构 API。微信小店、快手、1688 等未纳入本轮详细矩阵，待真实店铺范围确认后按同一清单评估。[[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S05)[[S06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S06)[[S07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S07)[[S08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S08)[[S21]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S21)
+抖店、小红书部分文档只能读取官方索引；京东、TikTok Shop 和拼多多官方准入正文仍不足。它们被标为待核验，而非虚构 API。微信小店、快手、1688 等未纳入本轮详细矩阵，待真实店铺范围确认后按同一清单评估。[[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S05)[[S06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S06)[[S07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S07)[[S08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S08)[[S21]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S21)
 
 03 / CONNECT THE EXISTING SYSTEMS
 
@@ -234,7 +234,7 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 
 基于已核验商品事实，填充已批准的品牌模板，跟踪异步导出，产物带模板/商品版本和 hash。
 
-边界：Connect Autofill 的正式使用有 Enterprise 门槛；开发试用不能替代客户许可。模板生成不等于平台自动发布。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S09) [[C03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C03)
+边界：Connect Autofill 的正式使用有 Enterprise 门槛；开发试用不能替代客户许可。模板生成不等于平台自动发布。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S09) [[C03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C03)
 
 接到商品事实 → 素材草稿 → 审核 → 渠道发布。
 
@@ -242,7 +242,7 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 
 同步可访问文件的设计规范、导出图和版本/评论事件，把反馈转为明确的待修改项。
 
-边界：REST Webhook 不代表任意服务端编辑画布；席位、资源套餐和接口层级影响限流，需缓存与退避。 [[S10]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S10) [[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S11)
+边界：REST Webhook 不代表任意服务端编辑画布；席位、资源套餐和接口层级影响限流，需缓存与退避。 [[S10]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S10) [[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S11)
 
 管理模板标准、版式与审批，不作为业务数据仓库。
 
@@ -250,7 +250,7 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 
 接收授权邮箱的变更信号，再读取增量历史；归类供应商确认、异常通知和合作资料，回复先生成草稿。
 
-边界：watch 需续约，historyId 不是邮件全文。先验发件人、线程与授权收件人；外部邮件中的指令不拥有系统权限。 [[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S12) [[C04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C04)
+边界：watch 需续约，historyId 不是邮件全文。先验发件人、线程与授权收件人；外部邮件中的指令不拥有系统权限。 [[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S12) [[C04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C04)
 
 进货资料/售后沟通 → 工单 → 人工确认或已授权发送。
 
@@ -258,7 +258,7 @@ Notifications API 可配置目的地与订阅；按支持的事件采用相应�
 
 Calendar 管理上线窗口、值班与协作排期；Contacts / People 提供已授权人员身份线索，帮助解析真实负责人。
 
-边界：日历通知需要再取变更并续期；联系人存在不代表营销同意，不得用姓名合并不同平台买家。 [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S13) [[S14]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S14)
+边界：日历通知需要再取变更并续期；联系人存在不代表营销同意，不得用姓名合并不同平台买家。 [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S13) [[S14]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S14)
 
 把需要人判断的异常送给正确的人，而不是自动给所有联系人发信。
 
@@ -266,7 +266,7 @@ Calendar 管理上线窗口、值班与协作排期；Contacts / People 提供�
 
 CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、审核与发布。修复输出候选版本，不直接改生产脚本。
 
-边界：使用最小仓库权限与受控 CI；公共仓库只放脱敏报告/允许公开的代码。Pages 只承载说明网页。 [[S19]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S19) [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E07)
+边界：使用最小仓库权限与受控 CI；公共仓库只放脱敏报告/允许公开的代码。Pages 只承载说明网页。 [[S19]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S19) [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E07)
 
 漂移发现 → Issue/补丁 → 合同测试 → 人工或策略批准 → 灰度。
 
@@ -274,7 +274,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 
 商品资质、规格表、售后政策和历史运营方案按版本进入可授权检索的知识层，答案引用具体来源与生效时间。
 
-边界：当前会话的 Files 能力不是昭回自动获得的生产服务。需明确自有存储或文件服务 API、权限、保留期限与删除传播。 [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+边界：当前会话的 Files 能力不是昭回自动获得的生产服务。需明确自有存储或文件服务 API、权限、保留期限与删除传播。 [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 用资料补足业务事实；知识文本不能覆盖平台最新库存/订单状态。
 
@@ -282,7 +282,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 
 当前源码已有相关 provider 和连接操作路径。优先承载日报、待办、审批和故障分派，具体表格/消息动作逐项确认。
 
-边界：有 CLI/Skill 或 provider 代码不等于账号已授权。事件、群消息与审批的权限要独立验证；避免与昭回两边同时持有任务真相。 [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E07)
+边界：有 CLI/Skill 或 provider 代码不等于账号已授权。事件、群消息与审批的权限要独立验证；避免与昭回两边同时持有任务真相。 [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E07)
 
 昭回拥有执行状态；协同系统展示摘要、接收决定并回传。
 
@@ -290,7 +290,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 
 适合展示缺失 SKU、人工审核、供应商资料和异常队列；通过受控 API 与昭回交换业务记录。
 
-边界：Webhook 插件为 Professional Edition+；具体触发器文档与集成总览的细节存在差异，须按部署版本做合同测试。 [[S15]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S15) [[S16]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S16)
+边界：Webhook 插件为 Professional Edition+；具体触发器文档与集成总览的细节存在差异，须按部署版本做合同测试。 [[S15]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S15) [[S16]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S16)
 
 先用现有后台也能起步，不为看板引入第二套调度与事实库。
 
@@ -298,7 +298,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 
 库存占用、仓库执行和履约由现有系统负责；客服系统保留会话与人工接管。昭回协调，不平行重建完整 ERP。
 
-边界：Odoo 仅作补货逻辑参照，Chatwoot 仅作客服接口参照，本次未证明用户部署了它们。第三方访问仍需合法授权。 [[S17]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S17) [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S18) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+边界：Odoo 仅作补货逻辑参照，Chatwoot 仅作客服接口参照，本次未证明用户部署了它们。第三方访问仍需合法授权。 [[S17]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S17) [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S18) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 先连客户已有系统；缺少系统时再评估采购或建设。
 
@@ -306,7 +306,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 
 把每个连接器的 scope、读写 effect、执行位置、版本与验证方式登记为可检索能力，根专家按任务选择。
 
-边界：聊天中已连接的 App 不会自动出现在昭回内。OAuth 客户端、许可、工具运行时与持续服务需要独立建设；MCP 不是免审核通行证。 [[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E05) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+边界：聊天中已连接的 App 不会自动出现在昭回内。OAuth 客户端、许可、工具运行时与持续服务需要独立建设；MCP 不是免审核通行证。 [[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E05) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 业务意图 → 能力匹配 → 授权 → 测试 → 受控执行。
 
@@ -346,7 +346,7 @@ CodexPro 定位本地实现与故障；GitHub 管理适配器版本、测试、�
 **对应项目落点**
 现有选品/数据专家 + 工作区状态；product-opportunity-lab 仍为 guided。
 
-观测指标看证据完整率、实验完成率，而非模型生成了多少推荐。 [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+观测指标看证据完整率、实验完成率，而非模型生成了多少推荐。 [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 场景 02 / 商品与 SKU
 
@@ -374,7 +374,7 @@ tenant + shop + platform product/variant ID + 已确认 canonical SKU；记录�
 **对应项目落点**
 复用 product-catalog 与已授权 Connector；补跨来源 identity_map 和字段级 provenance。
 
-观测指标唯一映射率、关键字段完整率、过期事实使用次数。 [[C02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C02) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+观测指标唯一映射率、关键字段完整率、过期事实使用次数。 [[C02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C02) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 场景 03 / 素材与上架
 
@@ -402,7 +402,7 @@ tenant + shop + platform product/variant ID + 已确认 canonical SKU；记录�
 **对应项目落点**
 content-growth-studio / product-digital-twin 从 guided 升级；Canva 企业许可单独验收。
 
-观测指标事实错误率、一次审核通过率、重复 Listing 数与发布回执完整率。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S09) [[S10]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S10) [[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S11) [[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S05) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)
+观测指标事实错误率、一次审核通过率、重复 Listing 数与发布回执完整率。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S09) [[S10]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S10) [[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S11) [[S05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S05) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)
 
 场景 04 / 订单与履约
 
@@ -430,7 +430,7 @@ content-growth-studio / product-digital-twin 从 guided 升级；Canva 企业许
 **对应项目落点**
 新增订单/履约适配，复用 Task/Run/租约；不复用通用只读浏览器去执行发货。
 
-观测指标漏单差异、重复出库次数、待履约超时、不可判定动作年龄。 [[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S04) [[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S01) [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E07)
+观测指标漏单差异、重复出库次数、待履约超时、不可判定动作年龄。 [[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S04) [[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S01) [[E07]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E07)
 
 场景 05 / 库存与补货
 
@@ -458,7 +458,7 @@ content-growth-studio / product-digital-twin 从 guided 升级；Canva 企业许
 **对应项目落点**
 demand-inventory-procurement 当前 guided；先复用已有 ERP/WMS，不新造库存账本争写。
 
-观测指标库存同步差异、缺货预警提前量、预测区间覆盖、过期库存占比。 [[S17]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S17) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+观测指标库存同步差异、缺货预警提前量、预测区间覆盖、过期库存占比。 [[S17]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S17) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01) [[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 场景 06 / 客服与售后
 
@@ -486,7 +486,7 @@ demand-inventory-procurement 当前 guided；先复用已有 ERP/WMS，不新造
 **对应项目落点**
 复用 customer-service、专用通道、delivery reconciliation；补业务问答评测，不把配置 hash 检查当答案正确。
 
-观测指标错误事实率、人工采用/修改率、首次有效响应、重复发送与转人工原因。 [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S18) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01) [[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E02) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06)
+观测指标错误事实率、人工采用/修改率、首次有效响应、重复发送与转人工原因。 [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S18) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01) [[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E02) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06)
 
 场景 07 / 退货与 VOC
 
@@ -514,7 +514,7 @@ demand-inventory-procurement 当前 guided；先复用已有 ERP/WMS，不新造
 **对应项目落点**
 returns-voc-loop 当前 guided；复用任务、知识版本和协同审批。
 
-观测指标原因归类覆盖、重复问题率、改进完成率与客诉升级率。 [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S18) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)
+观测指标原因归类覆盖、重复问题率、改进完成率与客诉升级率。 [[S18]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S18) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)
 
 场景 08 / 内容与增长
 
@@ -542,7 +542,7 @@ returns-voc-loop 当前 guided；复用任务、知识版本和协同审批。
 **对应项目落点**
 content-growth-studio 当前 guided；素材、日历与日报经独立适配组合。
 
-观测指标素材采用率、有效咨询率、实验样本量与口径完整率。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S09) [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S13) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)
+观测指标素材采用率、有效咨询率、实验样本量与口径完整率。 [[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S09) [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S13) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)
 
 场景 09 / 会员与协同
 
@@ -570,7 +570,7 @@ content-growth-studio 当前 guided；素材、日历与日报经独立适配组
 **对应项目落点**
 member-lifecycle 当前 guided；Gmail/Contacts/Calendar 与现有 CRM 依用途接入。
 
-观测指标未经同意触达为零的验收目标、退订传播时延、负责人解析准确率。 [[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S12) [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S13) [[S14]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S14) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)
+观测指标未经同意触达为零的验收目标、退订传播时延、负责人解析准确率。 [[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S12) [[S13]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S13) [[S14]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S14) [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)
 
 场景 10 / 日报与巡检
 
@@ -598,7 +598,7 @@ member-lifecycle 当前 guided；Gmail/Contacts/Calendar 与现有 CRM 依用途
 **对应项目落点**
 复用 Timer、运行账本和跨回合工作区；daily-commerce-operator 模板仍 guided，不重复造 Agent 调度器。
 
-观测指标数据新鲜度、异常关闭率、重复工单率、日报覆盖率与修订次数。 [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01) [[E03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E03) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06) [[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S02)
+观测指标数据新鲜度、异常关闭率、重复工单率、日报覆盖率与修订次数。 [[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01) [[E03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E03) [[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06) [[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S02)
 
 05 / REFERENCE ARCHITECTURE
 
@@ -610,7 +610,7 @@ EXTERNAL外部系统
 
 店铺官方 API / 现有 ERP & WMS / 客服系统 / 设计、文件与协作平台
 
-保留事实与执行权威源。每个接口单独验权；平台要求的执行区域与敏感数据规则优先。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S04)
+保留事实与执行权威源。每个接口单独验权；平台要求的执行区域与敏感数据规则优先。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S04)
 
 ADD / ADAPT事件接入层
 
@@ -628,7 +628,7 @@ REUSE经营控制层
 
 目标/约束 → 专家与方案工厂 → Timer / Task / Run / Attempt
 
-持续的是状态，不是无限长对话。事件唤醒任务；确定性规则先分流，再给模型明确的待判断问题。[[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E06)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+持续的是状态，不是无限长对话。事件唤醒任务；确定性规则先分流，再给模型明确的待判断问题。[[E06]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E06)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 ADD / HARDEN受控执行层
 
@@ -648,7 +648,7 @@ CROSS-CUTTING监控与恢复
 
 #### Desktop：授权边缘执行器
 
-浏览器凭据留本地。检查设备心跳、页面漂移与登录状态；机器休眠不能声称实时监听。扩大商家数量前先验证隔离，不默认复用一个 Global Profile。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E05)
+浏览器凭据留本地。检查设备心跳、页面漂移与登录状态；机器休眠不能声称实时监听。扩大商家数量前先验证隔离，不默认复用一个 Global Profile。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E05)
 
 ### 事件怎么才算“可靠”？
 
@@ -656,7 +656,7 @@ CROSS-CUTTING监控与恢复
 
 通知是唤醒信号，不是唯一事实来源。
 
-Shopify、Amazon 和 Google 文档都有通知不完整/延迟或备用获取说明。收到变化后读详情，按游标补采，不能把通知数量当订单数量。[[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S02)[[S03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S03)[[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S12)
+Shopify、Amazon 和 Google 文档都有通知不完整/延迟或备用获取说明。收到变化后读详情，按游标补采，不能把通知数量当订单数量。[[S02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S02)[[S03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S03)[[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S12)
 
 - 
 
@@ -668,7 +668,7 @@ Inbox 唯一键包含租户、平台、店铺、订阅与来源交付标识；�
 
 把提交边界写进事务。
 
-落库才 ACK；业务状态与待发送 Outbox 同事务提交。现有完成事件仍可作进程内提示，但消费者从持久记录恢复。所查通知路径本身不是持久消息总线。[[E04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E04)
+落库才 ACK；业务状态与待发送 Outbox 同事务提交。现有完成事件仍可作进程内提示，但消费者从持久记录恢复。所查通知路径本身不是持久消息总线。[[E04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E04)
 
 - 
 
@@ -704,7 +704,7 @@ Inbox 唯一键包含租户、平台、店铺、订阅与来源交付标识；�
 
 ## 自动接入的产物， 是一份可验收的能力合同。
 
-FDE 应发现能力、生成可复用适配、产出验证证据，而不是每次临时现场发挥。复用已有 Registry、包校验和发布治理，新增环节在此均为建议。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E05)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+FDE 应发现能力、生成可复用适配、产出验证证据，而不是每次临时现场发挥。复用已有 Registry、包校验和发布治理，新增环节在此均为建议。[[E05]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E05)[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 - 
 
@@ -853,7 +853,7 @@ BUSINESS
 
  | 401 / 授权失效 | 在许可内续约；失败停止相关动作，不反复试密码或绕验证。 | 账号管理员重新授权；只读探针与 scope 核验通过。
 
- | 429 / 配额不足 | 遵循退避/Retry-After，降频、合并、每店公平调度，不换账号绕限制。 | 连接负责人调整策略；证明积压可在业务窗口内清理。[[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S11)
+ | 429 / 配额不足 | 遵循退避/Retry-After，降频、合并、每店公平调度，不换账号绕限制。 | 连接负责人调整策略；证明积压可在业务窗口内清理。[[S11]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S11)
 
  | 字段 / 页面漂移 | 隔离异常数据，记录脱敏证据，创建修复候选，不静默填默认值。 | FDE / 工程完成合同与真实样本测试后灰度。
 
@@ -867,7 +867,7 @@ BUSINESS
 
 把重复真实发送/出库作为零容忍验收项；超过约定数据时效即降级。unknown 的告警窗口可先讨论 15 分钟，再按业务确认，这不是平台 SLA。
 
-先记录基线再定每个来源的 SLO。Webhook 接收耗时小于平台期限，模型不占用 ACK 热路径。[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S01)
+先记录基线再定每个来源的 SLO。Webhook 接收耗时小于平台期限，模型不占用 ACK 热路径。[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S01)
 
 #### 贯穿全链路的证据
 
@@ -963,7 +963,7 @@ PHASE 04 / REPEATABLE OPERATIONS
 
 验证 managed/本地路径的角色与上下文继承。
 
- | 交接有任务身份与产物；成员 Skill 合并不能等同独立团队协作已完成。[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E08)
+ | 交接有任务身份与产物；成员 Skill 合并不能等同独立团队协作已完成。[[E08]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E08)
 
 优先投入接入和验证，不是新框架。
 
@@ -973,7 +973,7 @@ PHASE 04 / REPEATABLE OPERATIONS
 
 ## 自治等级应写进代码， 不只写在提示词里。
 
-当前客服模板仅支持 shadow / copilot；后两级是演进建议，需新增策略、通道与真实场景验收。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E01)[[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-E02)
+当前客服模板仅支持 shadow / copilot；后两级是演进建议，需新增策略、通道与真实场景验收。[[E01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E01)[[E02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-E02)
 
  | 等级 | 允许内容 | 门槛
 
@@ -999,7 +999,7 @@ PHASE 04 / REPEATABLE OPERATIONS
 
 ### 最小必要数据
 
-按商家、店铺和目的隔离；日志脱敏，保留/删除策略传播到缓存与检索。跨境及平台指定运行环境逐项核验，不用一套云存储通吃。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S04)
+按商家、店铺和目的隔离；日志脱敏，保留/删除策略传播到缓存与检索。跨境及平台指定运行环境逐项核验，不用一套云存储通吃。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S04)
 
 ### 不把规避当能力
 
@@ -1019,7 +1019,7 @@ SHOPIFY COMMUNITY / 2025.04
 
 ### 重复通知暴露提交边界。
 
-开发者报告重复 Webhook 及处理耗时问题。结合官方说明，不能等模型完成才应答。[[C01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C01)[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S01)
+开发者报告重复 Webhook 及处理耗时问题。结合官方说明，不能等模型完成才应答。[[C01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C01)[[S01]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S01)
 
 推论：持久化后 ACK，模型与动作异步；传输/业务分别去重。
 
@@ -1027,7 +1027,7 @@ SHOPIFY COMMUNITY / 2026.09.02
 
 ### SKU 文本不应是全球主键。
 
-开发者提出同店 SKU 唯一约束问题。跨渠道同名和人为修改应进入映射治理。[[C02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C02)
+开发者提出同店 SKU 唯一约束问题。跨渠道同名和人为修改应进入映射治理。[[C02]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C02)
 
 推论：平台对象 ID + 店铺作用域 → 已确认内部商品，不按相似名字合并。
 
@@ -1035,7 +1035,7 @@ CANVA OFFICIAL COMMUNITY / 2026.05 & 09
 
 ### 能开发不等于能商用。
 
-Autofill 企业门槛与 SDK 弃用公告提示许可、应用形态和版本也是接入依赖。[[C03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C03)[[S20]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S20)[[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S09)
+Autofill 企业门槛与 SDK 弃用公告提示许可、应用形态和版本也是接入依赖。[[C03]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C03)[[S20]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S20)[[S09]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S09)
 
 推论：能力登记许可/版本失效条件，不能把开发试用宣传为客户可用。
 
@@ -1043,13 +1043,13 @@ STACK OVERFLOW / 历史案例，现行文档复核
 
 ### watch 不是无限模型循环。
 
-Gmail 原始问题将订阅误解为循环轮询；现行官方文档说明 Pub/Sub、历史增量与续约。[[C04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-C04)[[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S12)
+Gmail 原始问题将订阅误解为循环轮询；现行官方文档说明 Pub/Sub、历史增量与续约。[[C04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-C04)[[S12]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S12)
 
 推论：确定性服务维护订阅，有业务变化才唤醒经营任务。
 
 淘宝的经验文档比“万能自动化”宣传更接近运营现场。
 
-官方讨论交易类型漏单、可变时间分页、延迟更新与断连补采。这提醒系统必须理解业务对象与平台语义，而不是只把 JSON 搬进数据库。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S04)
+官方讨论交易类型漏单、可变时间分页、延迟更新与断连补采。这提醒系统必须理解业务对象与平台语义，而不是只把 JSON 搬进数据库。[[S04]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S04)
 
 12 / EVIDENCE REGISTER
 
@@ -1351,4 +1351,4 @@ THE NEXT RIGHT STEP
 
 [保存文字研究稿 ↗](./research.md)[查看报告仓库 ↗](https://github.com/tbtnb/zhaohui-commerce-blueprint)[返回顶部 ↑](#top)
 
-本网站是独立静态说明与合成演示。GitHub Pages 不运行电商服务；Webhook、数据库和后台执行需另行部署。[[S19]](https://tbtnb.github.io/zhaohui-commerce-blueprint/#source-S19)
+本网站是独立静态说明与合成演示。GitHub Pages 不运行电商服务；Webhook、数据库和后台执行需另行部署。[[S19]](https://tbtnb.github.io/zhaohui-commerce-blueprint/architecture.html#source-S19)

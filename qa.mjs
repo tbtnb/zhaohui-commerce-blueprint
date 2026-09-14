@@ -27,7 +27,7 @@ if (!site) {
     } catch { response.writeHead(404).end('Not found'); }
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-  site = `http://127.0.0.1:${server.address().port}/`;
+  site = `http://127.0.0.1:${server.address().port}/architecture.html`;
 }
 let browser;
 const checks = [];

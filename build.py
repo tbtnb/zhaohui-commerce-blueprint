@@ -71,7 +71,7 @@ def main():
     targets = re.findall(r'href="#([^"\s]+)"',page)
     assert len(ids) == len(set(ids)), 'Duplicate IDs'
     assert set(targets) <= set(ids), 'Broken anchors'
-    (ROOT/'index.html').write_text(page,encoding='utf-8')
+    (ROOT/'architecture.html').write_text(page,encoding='utf-8')
     (ROOT/'.nojekyll').touch()
     from report_text import write_report
     write_report(ROOT,page)
