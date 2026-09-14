@@ -1,0 +1,27 @@
+{
+  "capability": "commerce.product_facts.read",
+  "status": "proposed_not_implemented",
+  "scope": [
+    "tenant",
+    "shop",
+    "product_or_variant"
+  ],
+  "effect": "data.read",
+  "transport": "official_api_or_approved_read_adapter",
+  "quality": [
+    "identity",
+    "provenance",
+    "freshness",
+    "coverage"
+  ],
+  "failure": [
+    "needs_auth",
+    "stale",
+    "ambiguous",
+    "rate_limited"
+  ],
+  "release": {
+    "version": "candidate",
+    "writes": "deny"
+  }
+}
