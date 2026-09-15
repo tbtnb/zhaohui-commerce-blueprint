@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-09-15",
+  "scope": "本地工作树静态核验，未启动或验证真实业务服务",
+  "head": "97c67d94aca60e46a925379a53e6f80bf862ee46",
+  "dirty": true,
+  "files": [
+    {
+      "path": "online-codex-server/data/ecommerce-solution-templates.v1.json",
+      "sha256": "31676c7517a6afd2a5f490743c5ddbbd0640bc9139b983ee377cf55571d3de51"
+    },
+    {
+      "path": "docs/product/ecommerce-ai-solution-factory-prd.md",
+      "sha256": "f70ca9e65dae64fe3e2328bf7f0cd7d51cd2e57360baf8994c51e5ca057a5aa9"
+    },
+    {
+      "path": "docs/architecture/desktop-local-connector-solution-binding.md",
+      "sha256": "4ec45b91d074d674fd56ac4c7f1e0a7ac64ad0a808acb5e2152e452f39298591"
+    },
+    {
+      "path": "docs/architecture/fde-black-box-browser-connector-design-packet.md",
+      "sha256": "a0dd65639f2646f4e309a841f16c057198d32e0ada69de563c2da809509aa243"
+    },
+    {
+      "path": "plugins/ai-data-hub/skills/commerce-solution-builder/references/continuous-commerce-operations.md",
+      "sha256": "09e2af98453ecc8921de2710ce1ce2ff9c43bba37d52265007d49cb7f0006dd4"
+    }
+  ],
+  "templates": [
+    {
+      "id": "commerce-diagnostic",
+      "name": "7 天 AI 经营诊断与蓝图",
+      "maturity": "executable",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "product-opportunity-lab",
+      "name": "新品机会与上市实验室",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "product-digital-twin",
+      "name": "商品数字孪生与多渠道 Listing 工厂",
+      "maturity": "guided",
+      "defaultMode": "copilot"
+    },
+    {
+      "id": "customer-service-command-center",
+      "name": "全渠道客服指挥中心",
+      "maturity": "executable",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "content-growth-studio",
+      "name": "内容与付费增长工作室",
+      "maturity": "guided",
+      "defaultMode": "copilot"
+    },
+    {
+      "id": "member-lifecycle",
+      "name": "会员生命周期运营",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "demand-inventory-procurement",
+      "name": "需求—库存—采购规划器",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "returns-voc-loop",
+      "name": "退货与 VOC 改进闭环",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "profit-risk-cockpit",
+      "name": "结算、毛利与风险驾驶舱",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    },
+    {
+      "id": "daily-commerce-operator",
+      "name": "每日 AI 经营总管",
+      "maturity": "guided",
+      "defaultMode": "shadow"
+    }
+  ]
+}
